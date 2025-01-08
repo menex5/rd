@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+
+    <!-- Link para o CSS do Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* Estilos do menu superior */
+        .navbar-custom {
+            background: linear-gradient(90deg, #0033cc, #1e90ff, #0033cc);
+            background-size: 500% 100%;
+            animation: wave 10s ease-in-out infinite;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes wave {
+
+            0%,
+            100% {
+                background-position: 100% 50%;
+            }
+
+            50% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .navbar-custom .navbar-brand img {
+            max-height: 80px;
+            border-radius: 15px;
+        }
+
+        .navbar-custom .nav-link {
+            color: white;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-custom .nav-link:hover {
+            color: #d0e4ff;
+        }
+
+        .navbar-custom .nav-item .nav-link img {
+            width: 30px;
+            vertical-align: middle;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .navbar-custom .nav-item .nav-link:hover img {
+            transform: scale(1.2);
+            opacity: 0.8;
+        }
+
+        /* Alinhando os itens do menu */
+        .navbar-nav {
+            margin-left: auto;
+        }
+
+        /* Estilo do ícone de perfil */
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .profile-icon {
+            background-color: black;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-icon img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #0033cc;
+            object-fit: cover;
+        }
+
+        .input-container {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .form-control {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: 15px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+        }
+
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Menu Superior -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://cdn-icons-png.flaticon.com/512/26/26969.png" alt="Logomarca">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="prototipo1.html">
+                            <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="GitHub">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="perfil.html">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3106/3106921.png" alt="Perfil"
+                                class="perfil-icon">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="carrinho.html">
+                            <img src="https://cdn-icons-png.flaticon.com/512/6713/6713723.png" alt="Carrinho">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo de Perfil -->
+    <div class="container profile-container">
+        <!-- Ícone de pessoa com fundo preto -->
+        <div class="profile-icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/3106/3106921.png" alt="Ícone de Pessoa">
+        </div>
+
+        <!-- Imagem circular -->
+        <img class="profile-image" src="https://via.placeholder.com/120" alt="Imagem de Perfil">
+
+        <!-- Caixas de texto -->
+        <div class="input-container">
+            <input type="text" class="form-control" placeholder="Digite seu nome">
+            <input type="email" class="form-control" placeholder="Digite seu e-mail">
+        </div>
+
+        <!-- Botões -->
+        <div class="button-container">
+            <button class="btn btn-custom">Entrar</button>
+            <button class="btn btn-custom" onclick="window.location.href='cadastro.html'">Cadastra-se</button>
+        </div>
+    </div>
+
+    <!-- Scripts do Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

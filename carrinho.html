@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+
+    <!-- Link para o CSS do Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* Estilos do menu superior */
+        .navbar-custom {
+            background: linear-gradient(90deg, #0033cc, #1e90ff, #0033cc);
+            background-size: 500% 100%;
+            animation: wave 10s ease-in-out infinite;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes wave {
+            0%, 100% {
+                background-position: 100% 50%;
+            }
+            50% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .navbar-custom .navbar-brand img {
+            max-height: 80px;
+            border-radius: 15px;
+        }
+
+        .navbar-custom .nav-link {
+            color: white;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-custom .nav-link:hover {
+            color: #d0e4ff;
+        }
+
+        .navbar-custom .nav-item .nav-link img {
+            width: 30px;
+            vertical-align: middle;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .navbar-custom .nav-item .nav-link:hover img {
+            transform: scale(1.2);
+            opacity: 0.8;
+        }
+
+        /* Alinhando os itens do menu */
+        .navbar-nav {
+            margin-left: auto;
+        }
+
+        /* Estilos gerais da página */
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-details {
+            display: flex;
+            align-items: center;
+        }
+
+        .item-image {
+            width: 80px;
+            height: 80px;
+            margin-right: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            object-fit: cover;
+        }
+
+        .item-name {
+            font-size: 18px;
+        }
+
+        .item-quantity {
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            margin: 0 5px;
+        }
+
+        .remove-btn {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .remove-btn:hover {
+            background-color: #e60000;
+        }
+
+        .total {
+            text-align: right;
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .checkout-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Menu Superior ajustado -->
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+        <!-- Logo Centralizado -->
+        <a class="navbar-brand mx-auto" href="#">
+            <img src="https://cdn-icons-png.flaticon.com/512/26/26969.png" alt="Logomarca">
+        </a>
+        <!-- Itens do Menu à Direita -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="prototipo1.html">
+                        <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="GitHub">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="perfil.html">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3106/3106921.png" alt="Perfil" class="perfil-icon">
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="carrinho.html">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6713/6713723.png" alt="Carrinho">
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownOpcoes" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://static.vecteezy.com/system/resources/previews/019/858/703/non_2x/menu-flat-color-outline-icon-free-png.png" alt="Opções" class="options-icon">
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownOpcoes">
+                        <li><a class="dropdown-item" href="#funcionalidade1">Funcionalidade 1</a></li>
+                        <li><a class="dropdown-item" href="#funcionalidade2">Funcionalidade 2</a></li>
+                        <li><a class="dropdown-item" href="#funcionalidade3">Funcionalidade 3</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Conteúdo da Página -->
+<div class="container">
+    <h1>Carrinho de Compras</h1>
+    <div id="cart-container"></div>
+
+    <div class="total">
+        Total: R$ <span id="total">0.00</span>
+    </div>
+
+    <a href="#" class="checkout-btn">Finalizar Compra</a>
+</div>
+
+<!-- Scripts do Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Script para Carrinho de Compras -->
+<script>
+    // Carregar carrinho do localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    const cartContainer = document.getElementById('cart-container');
+    const totalDisplay = document.getElementById('total');
+    
+    // Função para atualizar o total
+    function updateTotal() {
+        let total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+        totalDisplay.innerText = total.toFixed(2);
+    }
+    
+    // Função para renderizar o carrinho
+    function renderCart() {
+        cartContainer.innerHTML = '';
+        cart.forEach((item, index) => {
+            const cartItemDiv = document.createElement('div');
+            cartItemDiv.classList.add('cart-item');
+            cartItemDiv.innerHTML = `
+                <div class="item-details">
+                    <img src="${item.image}" class="item-image" alt="${item.name}">
+                    <div>
+                        <div class="item-name">${item.name}</div>
+                        <div class="item-quantity">
+                            <button class="decrease-quantity btn btn-sm btn-secondary">-</button>
+                            <input type="text" value="${item.quantity}" class="quantity-input" disabled>
+                            <button class="increase-quantity btn btn-sm btn-secondary">+</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="remove-btn">Remover</button>
+            `;
+            
+            // Lógica de aumentar a quantidade
+            cartItemDiv.querySelector('.increase-quantity').addEventListener('click', () => {
+                item.quantity++;
+                updateCart();
+            });
+            
+            // Lógica de diminuir a quantidade
+            cartItemDiv.querySelector('.decrease-quantity').addEventListener('click', () => {
+                if (item.quantity > 1) {
+                    item.quantity--;
+                    updateCart();
+                }
+            });
+            
+            // Lógica para remover o item
+            cartItemDiv.querySelector('.remove-btn').addEventListener('click', () => {
+                cart.splice(index, 1);
+                updateCart();
+            });
+            
+            cartContainer.appendChild(cartItemDiv);
+        });
+    }
+
+    // Função para salvar o carrinho no localStorage
+    function updateCart() {
+        localStorage.setItem('cart', JSON.stringify(cart));
+        renderCart();
+        updateTotal();
+    }
+
+    renderCart();
+    updateTotal();
+</script>
+
+</body>
+</html>
